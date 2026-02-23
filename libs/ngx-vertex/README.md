@@ -29,6 +29,7 @@ ngx-vertex is designed to assist in creating and managing a [directed acycylic g
 ## Table of Contents
 
 - [Installation](#installation)
+- [Migration from @ngneat/dag](#migration-from-ngneatdag)
 - [Usage](#usage)
 - [FAQ](#faq)
 
@@ -41,6 +42,41 @@ ngx-vertex is designed to assist in creating and managing a [directed acycylic g
 ### Yarn
 
 `yarn add ngx-vertex`
+
+## Migration from @ngneat/dag
+
+If you are migrating an existing project from `@ngneat/dag` to `ngx-vertex`, follow these steps:
+
+1. **Uninstall the old package and install the new one:**
+   ```bash
+   npm uninstall @ngneat/dag
+   npm install ngx-vertex
+   ```
+2. **Update imports:**
+   Replace all imports from `@ngneat/dag` with `ngx-vertex`.
+
+   ```ts
+   // Before
+   import {
+     DagManagerService,
+     DagManagerServiceModule,
+     DagModelItem,
+   } from '@ngneat/dag';
+
+   // After
+   import {
+     NgxVertexService,
+     NgxVertexModule,
+     NgxVertexItem,
+   } from 'ngx-vertex';
+   ```
+
+3. **Rename classes and interfaces:**
+   - `DagManagerService` is now `NgxVertexService`
+   - `DagManagerServiceModule` is now `NgxVertexModule`
+   - `DagModelItem` is now `NgxVertexItem`
+
+After making these changes, your application should work exactly as before, with the added benefit of improved DAG visualization ordering.
 
 ## Usage
 
@@ -336,9 +372,7 @@ Answer: The easiest way to display the DAG model is to use the `async` pipe to s
 
 ```html
 <div class="flex row" *ngFor="let wf of workflow$ | async">
-  <app-box *ngFor="let wfs of wf">
-    {{ wfs.stepId }}
-  </app-box>
+  <app-box *ngFor="let wfs of wf"> {{ wfs.stepId }} </app-box>
 </div>
 ```
 
