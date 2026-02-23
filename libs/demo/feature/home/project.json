@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/demo/feature/home/src",
-  "prefix": "ngneat-dag",
+  "prefix": "ngx-vertex",
   "tags": ["scope:demo", "type:feature"],
   "generators": {
     "@schematics/angular:component": {

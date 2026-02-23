@@ -23,7 +23,7 @@
       "@ngx-vertex/shared/ui/components": [
         "libs/shared/ui/components/src/index.ts"
       ],
-      "ngx-vertex": ["libs/dag-manager-service/src/index.ts"]
+      "ngx-vertex": ["libs/ngx-vertex/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

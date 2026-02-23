@@ -1,12 +1,12 @@
-import { DagManagerService } from './dag-manager.service';
-import { DagModelItem } from './interfaces/dag-model-item';
-interface TestDagModel extends DagModelItem {
+import { NgxVertexService } from './ngx-vertex.service';
+import { NgxVertexItem } from './interfaces/ngx-vertex-item';
+interface TestDagModel extends NgxVertexItem {
   name: string;
 }
-describe('DagManagerService', () => {
-  let service: DagManagerService<TestDagModel>;
+describe('NgxVertexService', () => {
+  let service: NgxVertexService<TestDagModel>;
   beforeEach(() => {
-    service = new DagManagerService<TestDagModel>();
+    service = new NgxVertexService<TestDagModel>();
   });
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -528,7 +528,7 @@ describe('DagManagerService', () => {
     } catch (error) {
       expect(error).toBeTruthy();
       expect(error.message).toBe(
-        'DagManagerService error: Cannot add parent ID 1 to child 2'
+        'NgxVertexService error: Cannot add parent ID 1 to child 2'
       );
     }
   });

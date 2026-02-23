@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WorkflowItem } from '../landing/landing.component';
 
 @Component({
-    selector: 'ngneat-dag-node',
+    selector: 'ngx-vertex-node',
     templateUrl: './node.component.html',
     styleUrls: ['./node.component.scss'],
     standalone: false

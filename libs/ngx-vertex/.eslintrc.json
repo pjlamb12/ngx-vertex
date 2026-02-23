@@ -9,7 +9,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "parserOptions": {
-        "project": ["libs/dag-manager-service/tsconfig.*?.json"]
+        "project": ["libs/ngx-vertex/tsconfig.*?.json"]
       },
       "rules": {
         "@angular-eslint/directive-selector": [

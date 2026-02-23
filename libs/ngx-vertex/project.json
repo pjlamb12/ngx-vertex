@@ -2,7 +2,7 @@
   "name": "ngx-vertex",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/dag-manager-service/src",
+  "sourceRoot": "libs/ngx-vertex/src",
   "prefix": "ngx-vertex",
   "tags": ["scope:lib", "type:util"],
   "generators": {
@@ -14,12 +14,12 @@
     "build": {
       "executor": "@nx/angular:package",
       "options": {
-        "tsConfig": "libs/dag-manager-service/tsconfig.lib.json",
-        "project": "libs/dag-manager-service/ng-package.json"
+        "tsConfig": "libs/ngx-vertex/tsconfig.lib.json",
+        "project": "libs/ngx-vertex/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/dag-manager-service/tsconfig.lib.prod.json"
+          "tsConfig": "libs/ngx-vertex/tsconfig.lib.prod.json"
         }
       },
       "defaultConfiguration": "production"
@@ -27,16 +27,16 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "lintFilePatterns": ["libs/dag-manager-service/src/**/*.ts"]
+        "lintFilePatterns": ["libs/ngx-vertex/src/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/dag-manager-service/jest.config.ts",
-        "tsConfig": "libs/dag-manager-service/tsconfig.spec.json"
+        "jestConfig": "libs/ngx-vertex/jest.config.ts",
+        "tsConfig": "libs/ngx-vertex/tsconfig.spec.json"
       },
-      "outputs": ["{workspaceRoot}/coverage/libs/dag-manager-service"]
+      "outputs": ["{workspaceRoot}/coverage/libs/ngx-vertex"]
     }
   }
 }

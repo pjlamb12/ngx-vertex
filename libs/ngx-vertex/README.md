@@ -51,18 +51,18 @@ The first thing to note is that this service is not provided in the root of the 
 @Component({
   selector: 'app-workflow-builder',
   ...
-  providers: [DagManagerService]
+  providers: [NgxVertexService]
 })
 export class WorkflowBuilderComponent {}
 ```
 
 Each time the component is activated, a new instance of this service will be created. This ensures that there will not be any previous data still in the service when you go to the component; you'll start fresh each time.
 
-The next step when using the service is to define an interface or class that extends the included `DagModelItem` interface provided in this library. Your interface and class can have any number of attributes on it, but extending the `DagModelItem` ensures that the correct attributes will be present for the `DagManagerService` to properly work. Here's the `DagModelItem` interface:
+The next step when using the service is to define an interface or class that extends the included `NgxVertexItem` interface provided in this library. Your interface and class can have any number of attributes on it, but extending the `NgxVertexItem` ensures that the correct attributes will be present for the `NgxVertexService` to properly work. Here's the `NgxVertexItem` interface:
 
 ```ts
 // dag-model-item.interface.ts
-export interface DagModelItem {
+export interface NgxVertexItem {
   stepId: number;
   parentIds: number[];
   branchPath: number;
@@ -75,14 +75,14 @@ After creating your interface or class, you should provide that in angle bracket
 
 ```ts
 // workflow-item.interface.ts
-export interface WorkflowItem extends DagModelItem {
+export interface WorkflowItem extends NgxVertexItem {
   name: string;
   id: string;
 }
 
 // workflow-builder.compoonent.ts
 export class WorkflowBuilderComponent {
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 }
 ```
 
@@ -93,7 +93,7 @@ After creating an instance of the service, one of the first things that should b
 ```ts
 // workflow-builder.component.ts
 export class WorkflowBuilderComponent implements OnInit {
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 
   ngOnInit() {
     const nextItemNumber =
@@ -116,7 +116,7 @@ export class WorkflowBuilderComponent implements OnInit {
 
 ### Priming the Service to Manage the DAG Model
 
-At this point, you are now ready to start having the service manage your DAG model. When the component loads, the service should be provided with an array of items that extend the `DagModelItem`. This could be a new array if the workflow is new, or the array could come from a database. Again, this should be a single dimension array of those items. The service will provide an observable of the DAG model which is a two dimensional array of these items, but we'll talk about that momentarily. Here's an example of priming the service with the starting items:
+At this point, you are now ready to start having the service manage your DAG model. When the component loads, the service should be provided with an array of items that extend the `NgxVertexItem`. This could be a new array if the workflow is new, or the array could come from a database. Again, this should be a single dimension array of those items. The service will provide an observable of the DAG model which is a two dimensional array of these items, but we'll talk about that momentarily. Here's an example of priming the service with the starting items:
 
 ```ts
 // workflow-builder.component.ts
@@ -131,7 +131,7 @@ export class WorkflowBuilderComponent implements OnInit {
     },
   ];
 
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 
   ngOnInit() {
     this._dagManager.setNewItemsArrayAsDagModel(this.startingItems);
@@ -152,7 +152,7 @@ The service provides a `dagModel$` observable that you can subscribe to to displ
 export class WorkflowBuilderComponent implements OnInit {
   public dagModel$: Observable<WorkflowItem[][]>;
 
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 
   ngOnInit() {
     this.dagModel$ = this._dagManager.dagModel$;
@@ -179,7 +179,7 @@ export class WorkflowBuilderComponent implements OnInit {
     },
   ];
 
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 
   // addStep would be called when a button in this component is clicked, or something similar, signalling the need to add a new step
   addStep(parentIds: number[], numberOfChildren: number = 1) {
@@ -191,7 +191,7 @@ export class WorkflowBuilderComponent implements OnInit {
 }
 ```
 
-This example is a function that will be called when a button is clicked in the component. It then calls the service with 4 parameters: the new step's `parentIds`, the number of children that should be created for those `parentIds` (again in the situation that there is a branch being created from a parent), the starting branch number (which will likely always be 1 when creating a new item), and an object with the attributes from `WorkflowItem`, minus the attributes inherited from `DagModelItem`. When you add a new item using this method, the `dagModel$` observable will automatically be updated.
+This example is a function that will be called when a button is clicked in the component. It then calls the service with 4 parameters: the new step's `parentIds`, the number of children that should be created for those `parentIds` (again in the situation that there is a branch being created from a parent), the starting branch number (which will likely always be 1 when creating a new item), and an object with the attributes from `WorkflowItem`, minus the attributes inherited from `NgxVertexItem`. When you add a new item using this method, the `dagModel$` observable will automatically be updated.
 
 The other method available for adding items is slightly different and doesn't update the DAG model observable. You will need to provide the same information as above, but in addition the single dimension array of items that serves as the backing to the DAG model. Here's an example:
 
@@ -208,7 +208,7 @@ export class WorkflowBuilderComponent implements OnInit {
     },
   ];
 
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 
   ngOnInit() {
     this.workflowItems = this._dagManager.addItem(
@@ -242,7 +242,7 @@ export class WorkflowBuilderComponent implements OnInit {
     },
   ];
 
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 
   ngOnInit() {
     this.workflowItems = this._dagManager.addItemAsNewPath(
@@ -279,7 +279,7 @@ export class WorkflowBuilderComponent implements OnInit {
     },
   ];
 
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 
   // this method will be called when a remove button in the UI is clicked
   removeStep(stepId: number) {
@@ -303,7 +303,7 @@ export class WorkflowBuilderComponent implements OnInit {
     },
   ];
 
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 
   // this method will be called when a remove button in the UI is clicked
   removeItem(stepId: number) {

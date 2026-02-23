@@ -7,21 +7,21 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core';
-import { DagManagerService, DagModelItem } from '../../../../../../dag-manager-service/src';
+import { NgxVertexService, NgxVertexItem } from 'ngx-vertex';
 import { Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
 declare let LeaderLine: any;
 
-export interface WorkflowItem extends DagModelItem {
+export interface WorkflowItem extends NgxVertexItem {
   name: string;
 }
 
 @Component({
-    selector: 'ngneat-dag-landing',
+    selector: 'ngx-vertex-landing',
     templateUrl: './landing.component.html',
     styleUrls: ['./landing.component.scss'],
-    providers: [DagManagerService],
+    providers: [NgxVertexService],
     standalone: false
 })
 export class LandingComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -33,7 +33,7 @@ export class LandingComponent implements OnInit, AfterViewInit, OnDestroy {
   public workflow$: Observable<WorkflowItem[][]>;
   public boxItemsLength$: Observable<number>;
 
-  constructor(private _dagManager: DagManagerService<WorkflowItem>) {}
+  constructor(private _dagManager: NgxVertexService<WorkflowItem>) {}
 
   ngOnInit(): void {
     this._dagManager.setNextNumber(2);

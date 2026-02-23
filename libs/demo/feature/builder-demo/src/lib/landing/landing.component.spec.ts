@@ -1,9 +1,9 @@
 import { LandingComponent } from './landing.component';
 describe('LandingComponent', () => {
   let component: LandingComponent;
-  let mockDagManagerService;
+  let mockNgxVertexService;
   beforeEach(() => {
-    component = new LandingComponent(mockDagManagerService);
+    component = new LandingComponent(mockNgxVertexService);
   });
   it('should create', () => {
     expect(component).toBeTruthy();

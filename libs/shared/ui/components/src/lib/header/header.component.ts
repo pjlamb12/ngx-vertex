@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'ngneat-dag-header',
+    selector: 'ngx-vertex-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
     standalone: false

@@ -1,9 +1,9 @@
 module.exports = {
-  displayName: 'dag-manager-service',
+  displayName: 'ngx-vertex',
   testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
-  coverageDirectory: '../../coverage/libs/dag-manager-service',
+  coverageDirectory: '../../coverage/libs/ngx-vertex',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

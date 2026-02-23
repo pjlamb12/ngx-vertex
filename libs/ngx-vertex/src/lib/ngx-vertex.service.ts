@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DagModelItem } from './interfaces/dag-model-item';
+import { NgxVertexItem } from './interfaces/ngx-vertex-item';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
-export class DagManagerService<T extends DagModelItem> {
+export class NgxVertexService<T extends NgxVertexItem> {
   private dagModelBs: BehaviorSubject<T[][] | null> = new BehaviorSubject<
     T[][] | null
   >(null);
@@ -208,7 +208,7 @@ export class DagManagerService<T extends DagModelItem> {
     startingBranch,
     numberOfChildren,
     parentIds,
-    genericFields: Omit<T, keyof DagModelItem>
+    genericFields: Omit<T, keyof NgxVertexItem>
   ): T[] {
     const newChildren: T[] = [];
     for (let count = 1; count <= numberOfChildren; count++) {
@@ -229,7 +229,7 @@ export class DagManagerService<T extends DagModelItem> {
     flatArray: T[],
     numberOfChildren = 1,
     startingBranch = 1,
-    genericFields: Omit<T, keyof DagModelItem>
+    genericFields: Omit<T, keyof NgxVertexItem>
   ): T[] {
     const potentialChildrenIds: number[] = [];
     parentIds.forEach((pid) => {
@@ -266,7 +266,7 @@ export class DagManagerService<T extends DagModelItem> {
     parentId: number,
     flatArray: T[],
     numberOfChildren: number,
-    genericFields: Omit<T, keyof DagModelItem>
+    genericFields: Omit<T, keyof NgxVertexItem>
   ): T[] {
     const currentChildrenOfParent: T[] = flatArray
       .filter((item) => item.parentIds.includes(parentId))
@@ -418,7 +418,7 @@ export class DagManagerService<T extends DagModelItem> {
     parentIds: number[],
     numberOfChildren: number,
     startingBranch = 1,
-    genericFields: Omit<T, keyof DagModelItem>
+    genericFields: Omit<T, keyof NgxVertexItem>
   ): void {
     const updatedItems: T[] = this.addItem(
       parentIds,
@@ -434,7 +434,7 @@ export class DagManagerService<T extends DagModelItem> {
   addNewStepAsNewPath(
     parentId: number,
     numberOfChildren: number,
-    genericFields: Omit<T, keyof DagModelItem>
+    genericFields: Omit<T, keyof NgxVertexItem>
   ): void {
     const updatedItems: T[] = this.addItemAsNewPath(
       parentId,
@@ -474,10 +474,10 @@ export class DagManagerService<T extends DagModelItem> {
       return items.map((i, index) => (index === idx ? updatedChild : i));
     } else {
       console.error(
-        `DagManagerService error: Cannot add parent ID ${parentId} to child ${childId}`
+        `NgxVertexService error: Cannot add parent ID ${parentId} to child ${childId}`
       );
       throw new Error(
-        `DagManagerService error: Cannot add parent ID ${parentId} to child ${childId}`
+        `NgxVertexService error: Cannot add parent ID ${parentId} to child ${childId}`
       );
     }
   }
