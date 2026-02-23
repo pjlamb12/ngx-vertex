@@ -33,69 +33,37 @@ export class NgxVertexService<T extends NgxVertexItem> {
 
   convertArrayToDagModel(itemsArray: T[]): T[][] {
     const result: T[][] = [];
-    const visited = new Set<number>();
+    const addedToResult = new Set<number>();
 
-    // Stack for DFS: { parentId, level }
-    // Start with "virtual" root parentId 0 at level 0
-    const stack = [{ parentId: 0, level: 0 }];
+    // Queue for BFS traversal, starting from the virtual root '0'
+    const queue = [0];
 
-    while (stack.length > 0) {
-      const { parentId, level } = stack.pop();
+    while (queue.length > 0) {
+      const parentId = queue.shift();
 
-      // Find children of this parent
+      // Find children of this parent, appropriately ordered by branch path
       const children = itemsArray
-        .filter((item) => {
-          // Prevent cycling if a node is already processed at this level or general visited check?
-          // Original logic: "if (levels[level] && levels[level].includes(stepId)) return false;"
-          // And "if (this.findInDoubleArray(e.stepId, result) === -1)" add it.
-          // We can check if stepId is already in 'result'.
-          return item.parentIds.includes(parentId);
-        })
-        .sort((a, b) => a.branchPath - b.branchPath); // Sort by branchPath ascending
+        .filter((item) => item.parentIds.includes(parentId))
+        .sort((a, b) => a.branchPath - b.branchPath);
 
-      // If we are processing children (level 1+), we need to ensure they are added to result
-      // Original logic added children to result[level]
-
-      // Since we simulate DFS, we want to process children in reverse order so they come off stack in correct order?
-      // Or we just add them to the result now.
-
-      // We iterate children to add them to result and push to stack
-      // To preserve order in simulation, we might need to push in reverse order
-      for (let i = children.length - 1; i >= 0; i--) {
+      for (let i = 0; i < children.length; i++) {
         const child = children[i];
 
-        // Ensure result level exists
-        if (!result[level]) result[level] = [];
+        if (!addedToResult.has(child.stepId)) {
+          // Use the exact depth of the node (longest path from root) to determine its row (level)
+          const level = this.getNodeDepth(child.stepId, itemsArray);
 
-        // Add to result if not present anywhere
-        if (this.findInDoubleArray(child.stepId, result) === -1) {
+          // Ensure all missing arrays up to the target level exist
+          for (let j = 0; j <= level; j++) {
+            if (!result[j]) result[j] = [];
+          }
+
           result[level].push(child);
-          visited.add(child.stepId);
-          // Push to stack to process ITS children next (next level)
-          stack.push({ parentId: child.stepId, level: level + 1 });
-        } else {
-          // If already visited, do we still traverse?
-          // Original logic: "modify(data, e.stepId, level + 1)" was called for EACH child,
-          // even if added or not?
-          // "modify" loop: "data.filter...forEach(e => { ... modify(...) })"
-          // Yes, it recurses even if not added to result?
-          // "if (this.findInDoubleArray...) { add } ... modify()"
-          // So we MUST recurse.
-          stack.push({ parentId: child.stepId, level: level + 1 });
+          addedToResult.add(child.stepId);
+          queue.push(child.stepId);
         }
       }
-
-      // Re-sort the current level (original logic did this oddly, but maybe we just ensure sorting once at the end?)
-      // Original logic sorted result[level-1]'s children.
-      // Since we add children in sorted order (from filter/sort above), result[level] should be roughly sorted.
-      // But multiple parents might contribute to the same level.
-      // Let's sort the level after we are done?
     }
-
-    // Final pass to ensure every level is sorted by branchPath (merging branches from diff parents)
-    result.forEach((level) => {
-      level.sort((a, b) => a.branchPath - b.branchPath);
-    });
 
     return result;
   }
