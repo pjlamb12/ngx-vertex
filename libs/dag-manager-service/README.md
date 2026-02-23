@@ -9,16 +9,16 @@
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)]()
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
-[![ngneat](https://img.shields.io/badge/@-ngneat-383636?style=flat-square&labelColor=8f68d4)](https://github.com/ngneat/)
+[![ngneat](https://img.shields.io/badge/@-ngneat-383636?style=flat-square&labelColor=8f68d4)](https://github.com/pjlamb12/)
 [![spectator](https://img.shields.io/badge/tested%20with-spectator-2196F3.svg?style=flat-square)]()
 
-@ngneat/dag is designed to assist in creating and managing a [directed acycylic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) model in an Angular application. You can think of a DAG as a workflow where a user adds steps and based on given criteria continues on to the next step or steps. With this library, you can add or remove steps to the DAG and the model will be properly updated. With this part of the workflow being managed by the service, you can focus on what the workflow does rather than how to let the user build it.
+ngx-vertex is designed to assist in creating and managing a [directed acycylic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) model in an Angular application. You can think of a DAG as a workflow where a user adds steps and based on given criteria continues on to the next step or steps. With this library, you can add or remove steps to the DAG and the model will be properly updated. With this part of the workflow being managed by the service, you can focus on what the workflow does rather than how to let the user build it.
 
 <p align="center">
  <img width="100%" height="100%" src="../../demo.gif">
 </p>
 
-[Live Demo](https://ngneat-dag-demo.netlify.app)
+[Live Demo](https://ngx-vertex-demo.netlify.app)
 
 ## Features
 
@@ -36,11 +36,11 @@
 
 ### NPM
 
-`npm install @ngneat/dag`
+`npm install ngx-vertex`
 
 ### Yarn
 
-`yarn add @ngneat/dag`
+`yarn add ngx-vertex`
 
 ## Usage
 
@@ -355,7 +355,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://www.prestonlamb.com"><img src="https://avatars3.githubusercontent.com/u/2006222?v=4" width="100px;" alt=""/><br /><sub><b>Preston Lamb</b></sub></a><br /><a href="https://github.com/ngneat/dag/commits?author=pjlamb12" title="Code">💻</a> <a href="https://github.com/ngneat/dag/commits?author=pjlamb12" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.prestonlamb.com"><img src="https://avatars3.githubusercontent.com/u/2006222?v=4" width="100px;" alt=""/><br /><sub><b>Preston Lamb</b></sub></a><br /><a href="https://github.com/pjlamb12/ngx-vertex/commits?author=pjlamb12" title="Code">💻</a> <a href="https://github.com/pjlamb12/ngx-vertex/commits?author=pjlamb12" title="Documentation">📖</a></td>
   </tr>
 </table>
 

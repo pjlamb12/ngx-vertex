@@ -9,14 +9,14 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "parserOptions": {
-        "project": ["apps/ngneat-dag-demo/tsconfig.*?.json"]
+        "project": ["apps/ngx-vertex-demo/tsconfig.*?.json"]
       },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "ngneat-dag",
+            "prefix": "ngx-vertex",
             "style": "camelCase"
           }
         ],
@@ -24,7 +24,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "ngneat-dag",
+            "prefix": "ngx-vertex",
             "style": "kebab-case"
           }
         ],

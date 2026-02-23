@@ -1,9 +1,9 @@
 {
-  "name": "dag-manager-service",
+  "name": "ngx-vertex",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/dag-manager-service/src",
-  "prefix": "ngneat-dag",
+  "prefix": "ngx-vertex",
   "tags": ["scope:lib", "type:util"],
   "generators": {
     "@schematics/angular:component": {

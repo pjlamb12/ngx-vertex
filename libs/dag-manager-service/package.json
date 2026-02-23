@@ -1,14 +1,14 @@
 {
-  "name": "@ngneat/dag",
+  "name": "ngx-vertex",
   "version": "3.0.0",
-  "homepage": "https://ngneat-dag-demo.netlify.app/",
+  "homepage": "https://github.com/pjlamb12/ngx-vertex",
   "description": "An Angular service for managing directed acyclic graphs",
   "bugs": {
-    "url": "https://github.com/ngneat/dag/issues"
+    "url": "https://github.com/pjlamb12/ngx-vertex/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ngneat/dag"
+    "url": "https://github.com/pjlamb12/ngx-vertex.git"
   },
   "keywords": [
     "angular",

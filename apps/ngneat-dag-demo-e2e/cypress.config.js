@@ -5,8 +5,8 @@ module.exports = defineConfig({
   fixturesFolder: './src/fixtures',
   modifyObstructiveCode: false,
   video: true,
-  videosFolder: '../../dist/cypress/apps/ngneat-dag-demo-e2e/videos',
-  screenshotsFolder: '../../dist/cypress/apps/ngneat-dag-demo-e2e/screenshots',
+  videosFolder: '../../dist/cypress/apps/ngx-vertex-demo-e2e/videos',
+  screenshotsFolder: '../../dist/cypress/apps/ngx-vertex-demo-e2e/screenshots',
   chromeWebSecurity: false,
   e2e: {
     specPattern: './src/integration/**/*.cy.{js,jsx,ts,tsx}',

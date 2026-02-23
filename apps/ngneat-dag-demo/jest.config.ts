@@ -1,9 +1,9 @@
 module.exports = {
-  displayName: 'ngneat-dag-demo',
+  displayName: 'ngx-vertex-demo',
   testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
-  coverageDirectory: '../../coverage/apps/ngneat-dag-demo',
+  coverageDirectory: '../../coverage/apps/ngx-vertex-demo',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

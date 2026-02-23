@@ -1,9 +1,9 @@
 {
-  "name": "ngneat-dag-demo",
+  "name": "ngx-vertex-demo",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/ngneat-dag-demo/src",
-  "prefix": "ngneat-dag",
+  "sourceRoot": "apps/ngx-vertex-demo/src",
+  "prefix": "ngx-vertex",
   "tags": [],
   "generators": {
     "@schematics/angular:component": {
@@ -14,17 +14,17 @@
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "options": {
-        "outputPath": "dist/apps/ngneat-dag-demo",
-        "index": "apps/ngneat-dag-demo/src/index.html",
-        "main": "apps/ngneat-dag-demo/src/main.ts",
-        "polyfills": "apps/ngneat-dag-demo/src/polyfills.ts",
-        "tsConfig": "apps/ngneat-dag-demo/tsconfig.app.json",
+        "outputPath": "dist/apps/ngx-vertex-demo",
+        "index": "apps/ngx-vertex-demo/src/index.html",
+        "main": "apps/ngx-vertex-demo/src/main.ts",
+        "polyfills": "apps/ngx-vertex-demo/src/polyfills.ts",
+        "tsConfig": "apps/ngx-vertex-demo/tsconfig.app.json",
         "assets": [
-          "apps/ngneat-dag-demo/src/favicon.ico",
-          "apps/ngneat-dag-demo/src/assets",
-          "apps/ngneat-dag-demo/src/_redirects"
+          "apps/ngx-vertex-demo/src/favicon.ico",
+          "apps/ngx-vertex-demo/src/assets",
+          "apps/ngx-vertex-demo/src/_redirects"
         ],
-        "styles": ["apps/ngneat-dag-demo/src/styles.scss"],
+        "styles": ["apps/ngx-vertex-demo/src/styles.scss"],
         "scripts": ["node_modules/leader-line/leader-line.min.js"],
         "vendorChunk": true,
         "extractLicenses": false,
@@ -37,8 +37,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/ngneat-dag-demo/src/environments/environment.ts",
-              "with": "apps/ngneat-dag-demo/src/environments/environment.prod.ts"
+              "replace": "apps/ngx-vertex-demo/src/environments/environment.ts",
+              "with": "apps/ngx-vertex-demo/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -68,11 +68,11 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-        "buildTarget": "ngneat-dag-demo:build"
+        "buildTarget": "ngx-vertex-demo:build"
       },
       "configurations": {
         "production": {
-          "buildTarget": "ngneat-dag-demo:build:production"
+          "buildTarget": "ngx-vertex-demo:build:production"
         }
       },
       "continuous": true
@@ -80,22 +80,22 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "ngneat-dag-demo:build"
+        "buildTarget": "ngx-vertex-demo:build"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "lintFilePatterns": ["apps/ngneat-dag-demo/src/**/*.ts"]
+        "lintFilePatterns": ["apps/ngx-vertex-demo/src/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "apps/ngneat-dag-demo/jest.config.ts",
-        "tsConfig": "apps/ngneat-dag-demo/tsconfig.spec.json"
+        "jestConfig": "apps/ngx-vertex-demo/jest.config.ts",
+        "tsConfig": "apps/ngx-vertex-demo/tsconfig.spec.json"
       },
-      "outputs": ["{workspaceRoot}/coverage/apps/ngneat-dag-demo"]
+      "outputs": ["{workspaceRoot}/coverage/apps/ngx-vertex-demo"]
     },
     "deploy": {
       "executor": "@nx/workspace:run-commands",

@@ -1,27 +1,27 @@
 {
-  "name": "ngneat-dag-demo-e2e",
+  "name": "ngx-vertex-demo-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/ngneat-dag-demo-e2e/src",
+  "sourceRoot": "apps/ngx-vertex-demo-e2e/src",
   "projectType": "application",
   "tags": [],
-  "implicitDependencies": ["ngneat-dag-demo"],
+  "implicitDependencies": ["ngx-vertex-demo"],
   "targets": {
     "e2e": {
       "executor": "@nx/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/ngneat-dag-demo-e2e/cypress.config.js",
-        "devServerTarget": "ngneat-dag-demo:serve"
+        "cypressConfig": "apps/ngx-vertex-demo-e2e/cypress.config.js",
+        "devServerTarget": "ngx-vertex-demo:serve"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "ngneat-dag-demo:serve:production"
+          "devServerTarget": "ngx-vertex-demo:serve:production"
         }
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "lintFilePatterns": ["apps/ngneat-dag-demo-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": ["apps/ngx-vertex-demo-e2e/**/*.{js,ts}"]
       }
     }
   }

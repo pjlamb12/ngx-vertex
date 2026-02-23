@@ -24,7 +24,7 @@
   "cli": {
     "analytics": "ddaacc56-6f23-4b0f-92c4-13a06bcaf184"
   },
-  "defaultProject": "ngneat-dag-demo",
+  "defaultProject": "ngx-vertex-demo",
   "generators": {
     "@nx/angular:application": {
       "unitTestRunner": "jest",

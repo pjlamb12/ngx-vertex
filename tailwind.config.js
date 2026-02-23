@@ -1,7 +1,7 @@
 module.exports = {
   purge: [
-    './apps/ngneat-dag-demo/src/**/*.html',
-    './apps/ngneat-dag-demo/**/*.ts',
+    './apps/ngx-vertex-demo/src/**/*.html',
+    './apps/ngx-vertex-demo/**/*.ts',
     './libs/**/*.html',
     './libs/**/*.ts',
   ],
